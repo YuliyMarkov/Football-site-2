@@ -1,12 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import store from './Store';
-import MainPage from './MainPage';
+// src/index.tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react"; // Добавляем PersistGate
+import App from "./App";
+import store, { persistor } from "./Store/Store";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+
+root.render(
   <Provider store={store}>
-    <MainPage />
-  </Provider>,
-  document.getElementById('root')
+    <PersistGate loading={null} persistor={persistor}> {/* Используем PersistGate */}
+      <App />
+    </PersistGate>
+  </Provider>
 );

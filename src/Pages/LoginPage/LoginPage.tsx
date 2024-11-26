@@ -1,65 +1,14 @@
-// src/pages/LoginPage/LoginPage.tsx
+// LoginPage.tsx
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { useNavigate, Link } from 'react-router-dom';
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f3f3f3;
-`;
-
-const Form = styled.form`
-  background: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const Input = styled.input`
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-`;
-
-const Button = styled.button`
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
-
-const ErrorMessage = styled.div`
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-`;
-
-const LinkText = styled(Link)`
-  color: #007bff;
-  text-align: center;
-  font-size: 14px;
-  margin-top: 10px;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+import { useNavigate } from 'react-router-dom';
+import {
+  Container,
+  Form,
+  Input,
+  Button,
+  ErrorMessage,
+  LinkText,
+} from './LoginPage.style';
 
 function LoginPage({ onLoginError, errorMessage }) {
   const [email, setEmail] = useState('');
